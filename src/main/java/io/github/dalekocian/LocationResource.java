@@ -13,7 +13,7 @@ import java.util.List;
  * Created by dalek on 6/4/2018.
  */
 @Path("/location")
-public class LocationResponse {
+public class LocationResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLocations() {

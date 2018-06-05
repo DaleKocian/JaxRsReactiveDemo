@@ -25,7 +25,7 @@ public class ServiceResponse {
         return forecasts;
     }
 
-    public ServiceResponse forecasts(List<Forecast> forecasts) {
+    public ServiceResponse setForecasts(List<Forecast> forecasts) {
         this.forecasts = forecasts;
         return this;
     }

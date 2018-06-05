@@ -13,6 +13,7 @@ public class MyApplication {
         Set<Class<?>> classes = new HashSet<>();
         classes.add(ForecastResource.class);
         classes.add(TemperatureResource.class);
+        classes.add(LocationResource.class);
         classes.add(ForecastReactiveResource.class);
         return classes;
     }

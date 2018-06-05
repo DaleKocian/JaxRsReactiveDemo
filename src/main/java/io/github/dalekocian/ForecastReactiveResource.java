@@ -36,10 +36,10 @@ public class ForecastReactiveResource {
                 locationTarget.request()
                 .rx()
                 .get(new GenericType<List<Location>>(){});
-        // By composing another stage on the location stage created above, collect the list of forecasts as in one big completion stage
+        // By composing another stage on the location stage created above, collect the list of setForecasts as in one big completion stage
         final CompletionStage<List<Forecast>> forecastCS =
                 locationCS.thenCompose(locations -> {
-                    // Create a stage for retrieving forecasts as a list of completion stages
+                    // Create a stage for retrieving setForecasts as a list of completion stages
                     List<CompletionStage<Forecast>> forecastList =
                     //Stream locations and process each location individually
                     locations.stream().map(location -> {
@@ -67,7 +67,7 @@ public class ForecastReactiveResource {
         CompletableFuture.completedFuture(
                 new ServiceResponse())
                 .thenCombine(forecastCS,
-                        ServiceResponse::forecasts)
+                        ServiceResponse::setForecasts)
                         .whenCompleteAsync((response, throwable) -> {
                             response.setProcessingTime(
                                     System.currentTimeMillis() - startTime);
